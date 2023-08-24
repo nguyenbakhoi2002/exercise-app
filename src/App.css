@@ -46,8 +46,25 @@ body {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+
   }
   
+  /* styles.css */
+.scroll-menu-wrapper {
+  width: 100%;
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.scroll-menu {
+  display: flex;
+  gap: 20px;
+}
+/*  */
+
+
+
+
   .detail-image {
     width: 729px;
     height: 742px;
