@@ -13,6 +13,27 @@ function Exercises({exercises, setExercises, bodyPart}) {
     setCurrentPage(value);
     window.scrollTo({top: 1800, behavior:  'smooth'})
   }
+
+  useEffect(()=>{
+    const fetchExercisesData = async ()=>{
+      let exercisesData = [];
+      if(bodyPart === 'all'){
+         exercisesData  = await fetchData
+        ('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions)
+        console.log(exercisesData)
+
+      }else{
+         exercisesData  = await fetchData
+        (`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`,
+         exerciseOptions)
+         console.log(exercisesData)
+
+      }
+      setExercises(exercisesData)
+    }
+    fetchExercisesData()
+  }, [bodyPart])
+
   const indexOfLastExercise = currentPage*exercisesPerPage;
   const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage ;
   const currentExercises = exercises.slice(indexOfFirstExercise, indexOfLastExercise);
